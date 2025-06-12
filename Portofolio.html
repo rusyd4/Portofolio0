@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00d4ff, #0066cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero>.container {
+            margin-top: 0px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ffffff" stroke-width="0.1" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(10px, 10px);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .profile-photo {
+            flex-shrink: 0;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .profile-info {
+            text-align: left;
+            flex: 1;
+        }
+
+        .profile-info h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+
+        /* Animations for profile info */
+        .animated-title {
+            animation: slideInFromLeft 1s ease forwards;
+        }
+
+        .super-animated-title {
+            animation: glowPulse 3s ease infinite alternate;
+        }
+
+        .animated-subtitle {
+            animation: slideInFromRight 1s ease 0.3s forwards;
+        }
+
+        .super-animated-subtitle {
+            animation: glowPulse 3s ease infinite alternate 0.5s;
+        }
+
+        .animated-description {
+            animation: fadeInText 2s ease 0.6s forwards;
+            const project=projectDocs[projectId];
+        }
+
+        .super-animated-description {
+            animation: fadeInText 2s ease 0.6s forwards, floatUpDown 4s ease-in-out infinite;
+        }
+
+        .animated-cta {
+            animation: bounceIn 1s ease 1s forwards;
+            opacity: 0;
+            display: inline-block;
+        }
+
+        .super-animated-cta {
+            animation: bounceIn 1s ease 1s forwards, pulseScale 2s ease infinite alternate;
+        }
+
+        @keyframes glowPulse {
+            0% {
+                text-shadow: 0 0 5px #00d4ff, 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+            }
+
+            100% {
+                text-shadow: 0 0 20px #00d4ff, 0 0 30px #00d4ff, 0 0 40px #00d4ff;
+            }
+        }
+
+        @keyframes floatUpDown {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulseScale {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+
+            70% {
+                transform: scale(0.9);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #cccccc;
+            font-weight: 300;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #aaaaaa;
+            max-width: 600px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #00d4ff, #0066cc);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #ffffff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Projects Section */
+        /* Projects Section - Updated */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        .project-description {
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: linear-gradient(45deg, rgba(0, 212, 255, 0.2), rgba(0, 102, 204, 0.2));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #00d4ff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+
+        .tech-tag:hover {
+            transform: scale(1.1) translateY(-4px);
+            box-shadow: 0 0 12px 3px rgba(0, 212, 255, 0.7);
+        }
+
+        .project-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-features li {
+            color: #aaaaaa;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .github-link {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+
+        .github-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .docs-link {
+            background: linear-gradient(45deg, #00d4ff, #0066cc);
+            color: white;
+            border: none;
+        }
+
+        .docs-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Modal untuk preview dokumentasi */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: rgba(26, 26, 46, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            overflow-x: auto;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        .modal-title {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #00d4ff;
+        }
+
+        .preview-images {
+            display: flex;
+            flex-direction: row;
+            /* overflow-x: auto; */
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            white-space: nowrap;
+            align-items: center;
+            max-height: 80vh;
+        }
+
+        .preview-image {
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+            max-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .preview-image:hover {
+            transform: scale(1.02);
+        }
+
+        .preview-image img {
+            max-width: 100%;
+            max-height: 80vh;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .preview-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .project-description-full {
+            color: #cccccc;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .skill-category h3 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .skill-item {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-item img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        .skill-item:hover {
+            transform: scale(1.1) translateY(-4px);
+            box-shadow: 0 0 12px 3px rgba(0, 212, 255, 0.7);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        /* Certificate Card Hover Effect */
+        .certificate-card {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+
+        .certificate-card:hover {
+            transform: scale(1.1) translateY(-4px);
+            box-shadow: 0 0 12px 3px rgba(0, 212, 255, 0.7);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: #cccccc;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            color: #00d4ff;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #00d4ff, #0066cc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-item:hover .contact-icon {
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        /* Social Links Section */
+        .social-section {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            color: #cccccc;
+            transition: all 0.3s ease;
+            padding: 1rem;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-width: 120px;
+        }
+
+        .social-link:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.3);
+            color: #00d4ff;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .github-icon {
+            background: linear-gradient(45deg, #333333, #666666);
+        }
+
+        .linkedin-icon {
+            background: linear-gradient(45deg, #0077b5, #00a0dc);
+        }
+
+        .email-icon {
+            background: linear-gradient(45deg, #ea4335, #fbbc05);
+        }
+
+
+        .twitter-icon {
+            background: linear-gradient(45deg, #1da1f2, #0d8bd9);
+        }
+
+        .social-link:hover .social-icon {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .social-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .social-links {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .social-link {
+                min-width: auto;
+                padding: 0.8rem;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#skills">Keahlian</a></li>
+                <li><a href="#sertif">Sertifikat</a></li>
+                <li><a href="#contact">Connect</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-section">
+                    <div class="profile-photo">
+                        <img src="Muna.png" alt="Foto Profil" class="profile-img">
+                    </div>
+                    <div class="profile-info">
+                        <h1 class="animated-title">Muhammad Nadhif Fasichul Ilmi</h1>
+                        <p id="typing-subtitle" class="subtitle animated-subtitle super-animated-subtitle"></p>
+                        <p class="description animated-description super-animated-description">
+                            Saya adalah mahasiswa tingkat akhir Teknik Komputer Universitas Indonesia dengan
+                            ketertarikan mendalam pada pengembangan software full-stack dan pemanfaatan teknologi
+                            cerdas, mencakup integrasi AI (Artificial Intelligence), sistem real-time, dan teknologi web
+                            modern untuk membangun solusi yang scalable dan berdampak. Saya memiliki pemahaman seperti
+                            merancang user interface menggunakan React.js dan React Native, pengembangan backend dengan
+                            Node.js dan Express.js, serta pengelolaan database seperti MongoDB dan PostgreSQL, sekaligus
+                            mengeksplorasi sistem embedded dan Internet of Things (IoT) dengan pendekatan real-time
+                            menggunakan ESP32, Arduino dan FreeRTOS.
+                        </p>
+                        <a href="#projects" class="cta-button animated-cta super-animated-cta">Lihat Proyek Saya</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Proyek Unggulan</h2>
+            <div class="projects-grid">
+                <!-- BotaniScan Project -->
+                <div class="project-card fade-in">
+                    <h3 class="project-title">BotaniScan</h3>
+                    <p class="project-description">
+                        Aplikasi mobile identifikasi tanaman berbasis kecerdasan buatan yang memungkinkan pengguna
+                        mengidentifikasi spesies tanaman melalui foto dengan akurasi tinggi menggunakan deep learning.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag"><img src="icon/react native.png" alt="React Native Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">React
+                            Native</span>
+                        <span class="tech-tag"><img src="icon/expressjs.png" alt="Express.js Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">Express.js</span>
+                        <span class="tech-tag"><img src="icon/mongodb.png" alt="MongoDB Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">MongoDB</span>
+                        <span class="tech-tag"><img src="icon/pytorch.png" alt="PyTorch Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">PyTorch</span>
+                        <span class="tech-tag"><img src="icon/computer.png" alt="Computer Vision Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">Computer
+                            Vision</span>
+                    </div>
+                    <ul class="project-features">
+                        <li>Implementasi CNN untuk klasifikasi gambar tanaman</li>
+                        <li>REST API dengan Express.js untuk backend services</li>
+                        <li>Database MongoDB untuk penyimpanan data tanaman</li>
+                        <li>Cross-platform mobile app dengan React Native</li>
+                        <li>Real-time image processing dan prediction</li>
+                    </ul>
+                    <div class="project-actions">
+                        <a href="https://github.com/rusyd4/BotaniScan" class="project-link github-link" target="_blank">
+                            <svg class="github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                                width="20" height="20">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.207 11.387.6.11.793-.26.793-.577v-2.234c-3.338.726-4.033-1.415-4.033-1.415-.546-1.386-1.333-1.755-1.333-1.755-1.09-.745.083-.73.083-.73 1.205.084 1.838 1.237 1.838 1.237 1.07 1.833 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.933 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.175 0 0 1.008-.323 3.3 1.23.957-.266 1.983-.398 3.003-.403 1.02.005 2.047.137 3.006.403 2.29-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.175.77.84 1.235 1.91 1.235 3.22 0 4.6-2.807 5.625-5.48 5.933.43.372.823 1.102.823 2.222v3.293c0 .318.192.688.8.577C20.565 21.796 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                            GitHub
+                        </a>
+                        <button class="project-link docs-link" onclick="openDocs('botaniscan')">
+                            Dokumentasi
+                        </button>
+                    </div>
+                </div>
+
+                <!-- IoT Monitoring System Project -->
+                <div class="project-card fade-in">
+                    <h3 class="project-title">Sistem Monitoring Kualitas Udara & Keamanan Mesin</h3>
+                    <p class="project-description">
+                        Sistem IoT terintegrasi untuk monitoring real-time kualitas udara dan status keamanan mesin
+                        industri dengan dashboard web interaktif dan alert system otomatis.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag"><img src="icon/esp32.png" alt="ESP32 Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">ESP32</span>
+                        <span class="tech-tag"><img src="icon/c-.png" alt="C++ Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">C++</span>
+                        <span class="tech-tag"><img src="icon/rtos.png" alt="FreeRTOS Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">FreeRTOS</span>
+                        <span class="tech-tag"><img src="icon/blynk.png" alt="Blynk Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">Blynk</span>
+                        <span class="tech-tag"><img src="icon/sensor.png" alt="IoT Sensors Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">IoT
+                            Sensors</span>
+                    </div>
+                    <ul class="project-features">
+                        <li>Multi-sensor integration (suhu, kelembaban, gas, getaran)</li>
+                        <li>Real-time data transmission dengan WiFi connectivity</li>
+                        <li>FreeRTOS untuk task scheduling dan resource management</li>
+                        <li>Cloud dashboard dengan Blynk platform</li>
+                        <li>Automated alert system dan data logging</li>
+                    </ul>
+                    <div class="project-actions">
+                        <a href="https://github.com/bintangsiahaan/air-quality-and-machine-safety-monitoring"
+                            class="project-link github-link" target="_blank">
+                            <svg class="github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                                width="20" height="20">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.207 11.387.6.11.793-.26.793-.577v-2.234c-3.338.726-4.033-1.415-4.033-1.415-.546-1.386-1.333-1.755-1.333-1.755-1.09-.745.083-.73.083-.73 1.205.084 1.838 1.237 1.838 1.237 1.07 1.833 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.933 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.175 0 0 1.008-.323 3.3 1.23.957-.266 1.983-.398 3.003-.403 1.02.005 2.047.137 3.006.403 2.29-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.175.77.84 1.235 1.91 1.235 3.22 0 4.6-2.807 5.625-5.48 5.933.43.372.823 1.102.823 2.222v3.293c0 .318.192.688.8.577C20.565 21.796 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                            GitHub
+                        </a>
+                        <button class="project-link docs-link" onclick="openDocs('iot-monitoring')">
+                            Dokumentasi
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Otakly Project -->
+                <div class="project-card fade-in">
+                    <h3 class="project-title">Otakly</h3>
+                    <p class="project-description">
+                        Platform web Q&A edukatif interaktif yang memfasilitasi pembelajaran kolaboratif dengan
+                        sistem voting, kategorisasi pertanyaan, dan fitur gamifikasi untuk meningkatkan engagement.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag"><img src="icon/javascript.png" alt="JavaScript Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">JavaScript</span>
+                        <span class="tech-tag"><img src="icon/nodejs.png" alt="Node.js Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">Node.js</span>
+                        <span class="tech-tag"><img src="icon/expressjs.png" alt="Express.js Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">Express.js</span>
+                        <span class="tech-tag"><img src="icon/postgresql.png" alt="PostgreSQL Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">PostgreSQL</span>
+                        <span class="tech-tag"><img src="icon/html.png" alt="HTML Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">HTML/CSS</span>
+                    </div>
+                    <ul class="project-features">
+                        <li>RESTful API dengan Express.js framework</li>
+                        <li>PostgreSQL database dengan query optimization</li>
+                        <li>User authentication dan authorization system</li>
+                        <li>Real-time voting dan ranking algorithm</li>
+                        <li>Responsive web design dengan modern UI/UX</li>
+                    </ul>
+                    <div class="project-actions">
+                        <a href="https://github.com/SistemBasisData2024/Otakly" class="project-link github-link"
+                            target="_blank">
+                            <svg class="github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                                width="20" height="20">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.207 11.387.6.11.793-.26.793-.577v-2.234c-3.338.726-4.033-1.415-4.033-1.415-.546-1.386-1.333-1.755-1.333-1.755-1.09-.745.083-.73.083-.73 1.205.084 1.838 1.237 1.838 1.237 1.07 1.833 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.933 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.175 0 0 1.008-.323 3.3 1.23.957-.266 1.983-.398 3.003-.403 1.02.005 2.047.137 3.006.403 2.29-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.175.77.84 1.235 1.91 1.235 3.22 0 4.6-2.807 5.625-5.48 5.933.43.372.823 1.102.823 2.222v3.293c0 .318.192.688.8.577C20.565 21.796 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                            GitHub
+                        </a>
+                        <button class="project-link docs-link" onclick="openDocs('otakly')">
+                            Dokumentasi
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="project-card fade-in">
+                    <h3 class="project-title">Tanning Bed</h3>
+                    <p class="project-description">
+                        Sistem embedded cerdas untuk simulasi alat tanning dengan kontrol waktu otomatis, pemantauan
+                        suhu real-time, dan proteksi suhu berlebih untuk menjaga keamanan pengguna.
+                    <div class="tech-stack">
+                        <span class="tech-tag"><img src="icon/Arduino.png" alt=" Arduino UNO Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;"> Arduino
+                            UNO</span>
+                        <span class="tech-tag"><img src="icon/Assembly.png" alt="Assembly Language Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">Assembly
+                            Language</span>
+                        <span class="tech-tag"><img src="icon/sensor.png" alt="IoT Sensors Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">IoT
+                            Sensors</span>
+                        <span class="tech-tag"><img src="icon/Digital.png" alt="Digital Display Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">Digital
+                            Display </span>
+                        <span class="tech-tag"><img src="icon/Alarm.png" alt=" Alarm & Control Output Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;"> Alarm &
+                            Control Output</span>
+                    </div>
+                    <ul class="project-features">
+                        <li>Timer selection via physical buttons</li>
+                        <li>Real-time temperature monitoring & auto shutdown</li>
+                        <li>SPI-based display for time & temperature</li>
+                        <li>Interrupt-driven start/stop control</li>
+                        <li>Integrated alert: LED, buzzer, and servo actuator</li>
+                    </ul>
+                    <div class="project-actions">
+                        <a href="https://github.com/LavlyRantissa/SSF-Kelompok16" class="project-link github-link"
+                            target="_blank">
+                            <svg class="github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                                width="20" height="20">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.207 11.387.6.11.793-.26.793-.577v-2.234c-3.338.726-4.033-1.415-4.033-1.415-.546-1.386-1.333-1.755-1.333-1.755-1.09-.745.083-.73.083-.73 1.205.084 1.838 1.237 1.838 1.237 1.07 1.833 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.933 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.175 0 0 1.008-.323 3.3 1.23.957-.266 1.983-.398 3.003-.403 1.02.005 2.047.137 3.006.403 2.29-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.175.77.84 1.235 1.91 1.235 3.22 0 4.6-2.807 5.625-5.48 5.933.43.372.823 1.102.823 2.222v3.293c0 .318.192.688.8.577C20.565 21.796 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                            GitHub
+                        </a>
+                        <button class="project-link docs-link" onclick="openDocs('tanning')">
+                            Dokumentasi
+                        </button>
+                    </div>
+                </div>
+
+
+
+                <div class="project-card fade-in">
+                    <h3 class="project-title">Jbus</h3>
+                    <p class="project-description">
+                        Aplikasi mobile berbasis Java untuk pemesanan kursi bus, dengan fitur top-up saldo, manajemen
+                        bus & jadwal oleh pemilik, serta backend sederhana berbasis JSON file tanpa database.
+                    <div class="tech-stack">
+                        <span class="tech-tag"><img src="icon/Java.png" alt=" Java Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;"> Java
+                        </span>
+                        <span class="tech-tag"><img src="icon/Android.png" alt="Android Studio Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">Android
+                            Studio</span>
+                        <span class="tech-tag"><img src="icon/IntelliJ.png" alt=" IntelliJ IDEA Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;"> IntelliJ
+                            IDEA</span>
+                        <span class="tech-tag"><img src="icon/JSON.png" alt="Digital Display Icon"
+                                style="width:20px; height:20px; vertical-align:middle; margin-right:6px;">JSON File
+                            Storage </span>
+
+                    </div>
+                    <ul class="project-features">
+                        <li>Android frontend dengan Java (Android Studio)</li>
+                        <li>Java backend (IntelliJ IDEA) dengan JSON sebagai database</li>
+                        <li>Fitur booking & top-up saldo terintegrasi</li>
+                        <li>Alur pengguna berbasis role: pelanggan & pemilik bus</li>
+                        <li>Arsitektur OOP untuk pengolahan data dan logika aplikasi</li>
+                    </ul>
+                    <div class="project-actions">
+                        <a href="https://github.com/NadhiefIlmi/JBus-android" class="project-link github-link"
+                            target="_blank">
+                            <svg class="github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                                width="20" height="20">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.207 11.387.6.11.793-.26.793-.577v-2.234c-3.338.726-4.033-1.415-4.033-1.415-.546-1.386-1.333-1.755-1.333-1.755-1.09-.745.083-.73.083-.73 1.205.084 1.838 1.237 1.838 1.237 1.07 1.833 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.933 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.175 0 0 1.008-.323 3.3 1.23.957-.266 1.983-.398 3.003-.403 1.02.005 2.047.137 3.006.403 2.29-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.175.77.84 1.235 1.91 1.235 3.22 0 4.6-2.807 5.625-5.48 5.933.43.372.823 1.102.823 2.222v3.293c0 .318.192.688.8.577C20.565 21.796 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                            GitHub
+                        </a>
+                        <button class="project-link docs-link" onclick="openDocs('jbus')">
+                            Dokumentasi
+                        </button>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal untuk dokumentasi (tambahkan sebelum closing body tag) -->
+    <div id="docs-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">Dokumentasi Proyek</h3>
+                <button class="close-btn" onclick="closeDocs()">&times;</button>
+            </div>
+            <div class="preview-images" id="preview-images">
+                <!-- Gambar akan ditambahkan di sini -->
+            </div>
+            <div class="project-description-full" id="project-description-full">
+                <!-- Deskripsi lengkap akan ditambahkan di sini -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data dokumentasi untuk setiap proyek
+        const projectDocs = {
+            'botaniscan': {
+                title: 'BotaniScan - Dokumentasi',
+
+                images: ['Botaniscan1.png', 'Botaniscan.png'] // Kosong, nanti bisa diisi
+            },
+            'iot-monitoring': {
+                title: 'IoT Monitoring System - Dokumentasi',
+
+                images: ['iot1.png', 'iot.png', 'iot2.png'] // Kosong, nanti bisa diisi
+            },
+            'otakly': {
+                title: 'Otakly Platform - Dokumentasi',
+
+                images: ['otakly.png']
+            },
+            'tanning': {
+                title: 'Tanning Bed - Dokumentasi',
+
+                images: ['tanning.jpg', 'tanning1.png']
+            },
+
+            'jbus': {
+                title: 'Jbus - Dokumentasi',
+
+                images: ['jbus1.png', 'jbus2.png', 'jbus3.png', 'jbus4.png', 'jbus5.png', 'jbus6.png', 'jbus7.png', 'jbus8.png', 'jbus9.png', 'jbus10.png']
+            }
+
+        };
+
+        function openDocs(projectId) {
+            const modal = document.getElementById('docs-modal');
+            const title = document.getElementById('modal-title');
+            const description = document.getElementById('project-description-full');
+            const imagesContainer = document.getElementById('preview-images');
+
+            const project = projectDocs[projectId];
+
+            title.textContent = project.title;
+            // Remove description display to show only images
+            description.innerHTML = '';
+
+            // Clear previous images
+            imagesContainer.innerHTML = '';
+
+            // Add images or placeholder
+            if (project.images.length > 0) {
+                project.images.forEach(imageSrc => {
+                    const imageDiv = document.createElement('div');
+                    imageDiv.className = 'preview-image';
+                    imageDiv.innerHTML = `<img src="${imageSrc}" alt="Project Preview">`;
+                    imagesContainer.appendChild(imageDiv);
+                });
+            } else {
+                // Add placeholder
+                const placeholderDiv = document.createElement('div');
+                placeholderDiv.className = 'preview-image';
+                placeholderDiv.innerHTML = `
+            <div class="preview-placeholder">
+                📸 Preview gambar akan ditambahkan di sini
+            </div>
+        `;
+                imagesContainer.appendChild(placeholderDiv);
+            }
+
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDocs() {
+            const modal = document.getElementById('docs-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('docs-modal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeDocs();
+            }
+        });
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeDocs();
+            }
+        });
+    </script>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Keahlian Teknis</h2>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-list">
+                        <span class="skill-item"><img src="icon/javascript.png" alt="JavaScript Icon">JavaScript</span>
+                        <span class="skill-item"><img src="icon/python.png" alt="Python Icon">Python</span>
+                        <span class="skill-item"><img src="icon/c-.png" alt="C++ Icon">C++</span>
+                        <span class="skill-item"><img src="icon/java.png" alt="Java Icon">Java</span>
+                        <span class="skill-item"><img src="icon/typescript.png" alt="TypeScript Icon">TypeScript</span>
+                        <span class="skill-item"><img src="icon/c.png" alt="C Icon">C</span>
+                        <span class="skill-item"><img src="icon/sql.png" alt="SQL Icon">SQL</span>
+                        <span class="skill-item"><img src="icon/MATLAB.png" alt="MATLAB Icon">Matlab </span>
+                        <span class="skill-item"><img src="icon/assembly.png" alt="assembly Icon">Assembly Language
+                        </span>
+
+
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>Frontend Development</h3>
+                    <div class="skill-list">
+                        <span class="skill-item"><img src="icon/react native.png" alt="React Native Icon">React
+                            Native</span>
+                        <span class="skill-item"><img src="icon/html.png" alt="HTML5 Icon">HTML5</span>
+                        <span class="skill-item"><img src="icon/css.png" alt="CSS3 Icon">CSS3</span>
+                        <span class="skill-item"><img src="icon/Tailwind CSS.png" alt="Tailwind CSS Icon">Tailwind
+                            CSS</span>
+                        <span class="skill-item"><img src="icon/Bootstrap.png" alt="Bootstrap Icon">Bootstrap</span>
+                        <span class="skill-item"><img src="icon/Responsive.png" alt="Responsive Design Icon">Responsive
+                            Design</span>
+
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>Backend Development</h3>
+                    <div class="skill-list">
+                        <span class="skill-item"><img src="icon/nodejs.png" alt="Node.js Icon">Node.js</span>
+                        <span class="skill-item"><img src="icon/expressjs.png" alt="Express.js Icon">Express.js</span>
+
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>Database </h3>
+                    <div class="skill-list">
+                        <span class="skill-item"><img src="icon/mongodb.png" alt="MongoDB Icon">Mongo DB</span>
+                        <span class="skill-item"><img src="icon/postgresql.png" alt="PostgreSQL Icon">Postgre SQL</span>
+                        <span class="skill-item"><img src="icon/json.png" alt="Json Icon">File-based Storage
+                            (JSON)</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>AI & Machine Learning</h3>
+                    <div class="skill-list">
+                        <span class="skill-item"><img src="icon/pytorch.png" alt="PyTorch Icon">PyTorch</span>
+                        <span class="skill-item"><img src="icon/computer.png" alt="Computer Vision Icon">Computer
+                            Vision</span>
+                        <span class="skill-item"><img src="icon/deeplearning.png" alt="Deep Learning Icon">Deep
+                            Learning</span>
+                        <span class="skill-item"><img src="icon/cnn.png" alt="CNN Icon">CNN</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>IoT & Embedded Systems</h3>
+                    <div class="skill-list">
+                        <span class="skill-item"><img src="icon/esp32.png" alt="ESP32 Icon">ESP32</span>
+                        <span class="skill-item"><img src="icon/arduino.png" alt="Arduino Uno Icon">Arduino Uno</span>
+                        <span class="skill-item"><img src="icon/alarm.png" alt="Alarm & Control Output Icon">Alarm &
+                            Control Output</span>
+                        <span class="skill-item"><img src="icon/digital.png" alt="Digital Display Icon">Digital
+                            Display</span>
+                        <span class="skill-item"><img src="icon/rtos.png" alt="FreeRTOS Icon">FreeRTOS</span>
+                        <span class="skill-item"><img src="icon/sensor.png" alt="Sensor Integration Icon">Sensor
+                            Integration</span>
+                        <span class="skill-item"><img src="icon/blynk.png" alt="Sensor Integration Icon">Blynk</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>Data Analysis & Visualization</h3>
+                    <div class="skill-list">
+                        <span class="skill-item"><img src="icon/Pandas.png" alt="Pandas Icon">Pandas</span>
+                        <span class="skill-item"><img src="icon/NumPy.png" alt="NumPy Icon">NumPy</span>
+                        <span class="skill-item"><img src="icon/Matplotlib.png" alt="Matplotlib Icon">Matplotlib</span>
+                        <span class="skill-item"><img src="icon/Tableau.png" alt="Tableau Icon">Tableau</span>
+                        <span class="skill-item"><img src="icon/looker-icon.svg" alt="Looker Studio Icon">Looker
+                            Studio</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>DevOps & Tools</h3>
+                    <div class="skill-list">
+                        <span class="skill-item"><img src="icon/Git.png" alt="Git Icon">Git</span>
+                        <span class="skill-item"><img src="icon/GitHub.png" alt="GitHub Icon">GitHub</span>
+                        <span class="skill-item"><img src="icon/Postman.png" alt="Postman Icon">Postman</span>
+                        <span class="skill-item"><img src="icon/Figma.png" alt="Figma Icon">Figma</span>
+                        <span class="skill-item"><img src="icon/Trello.png" alt="Trello Icon">Trello</span>
+                        <span class="skill-item"><img src="icon/Canva.png" alt="Canva Icon">Canva</span>
+                        <span class="skill-item"><img src="icon/android.png" alt="Android Studio Icon">Android
+                            Studio</span>
+                        <span class="skill-item"><img src="icon/intellij.png" alt="intellij Icon">Intellij IDEA</span>
+                        <span class="skill-item"><img src="icon/Microsoft.png" alt="Microsoft Office Icon">Microsoft
+                            Office</span>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Section -->
+    <section id="sertif" class="social-section" style="background: rgba(0, 0, 0, 0.2); padding: 3rem 0;">
+        <div class="container">
+            <h2 class="section-title">Sertifikat</h2>
+            <p style="font-size: 1.1rem; color: #cccccc; margin-bottom: 2rem; text-align: center;">
+                Berikut adalah beberapa sertifikat yang saya miliki
+            </p>
+            <div class="certificates-grid" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <div class="certificate-card"
+                    style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.1); max-width: 180px; box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);">
+                    <img src="IBM 1.jpg" alt="Sertifikat 1"
+                        style="width: 100%; border-radius: 10px; object-fit: contain; cursor: pointer;"
+                        onclick="openCertificateModal('IBM 1.jpg', 'Sertifikat')">
+                    <p style="color: #00d4ff; font-weight: 600; margin-top: 0.5rem; text-align: center;">Machine
+                        Learning with Python</p>
+                </div>
+                <div class="certificate-card"
+                    style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.1); max-width: 180px; box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);">
+                    <img src="IBM 2.jpg" alt="Sertifikat 2"
+                        style="width: 100%; border-radius: 10px; object-fit: contain; cursor: pointer;"
+                        onclick="openCertificateModal('IBM 2.jpg', 'Sertifikat')">
+                    <p style="color: #00d4ff; font-weight: 600; margin-top: 0.5rem; text-align: center;">Data Analysis
+                        with Python</p>
+                </div>
+                <div class="certificate-card"
+                    style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.1); max-width: 180px; box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);">
+                    <img src="IBM 3.jpg" alt="Sertifikat 3"
+                        style="width: 100%; border-radius: 10px; object-fit: contain; cursor: pointer;"
+                        onclick="openCertificateModal('IBM 3.jpg', 'Sertifikat')">
+                    <p style="color: #00d4ff; font-weight: 600; margin-top: 0.5rem; text-align: center;">Deep Learning
+                        Fundamentals
+                    </p>
+                </div>
+                <div class="certificate-card"
+                    style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.1); max-width: 180px; box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);">
+                    <img src="IBM 4.jpg" alt="Sertifikat 4"
+                        style="width: 100%; border-radius: 10px; object-fit: contain; cursor: pointer;"
+                        onclick="openCertificateModal('IBM 4.jpg', 'Sertifikat')">
+                    <p style="color: #00d4ff; font-weight: 600; margin-top: 0.5rem; text-align: center;">Python 101 for
+                        Data Science
+                    </p>
+                </div>
+                <div class="certificate-card"
+                    style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.1); max-width: 180px; box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);">
+                    <img src="IBM 5.jpg" alt="Sertifikat 5"
+                        style="width: 100%; border-radius: 10px; object-fit: contain; cursor: pointer;"
+                        onclick="openCertificateModal('IBM 5.jpg', 'Sertifikat')">
+                    <p style="color: #00d4ff; font-weight: 600; margin-top: 0.5rem; text-align: center;">SQL and
+                        Relational Database 101
+                    </p>
+                </div>
+                <div class="certificate-card"
+                    style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.1); max-width: 180px; box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);">
+                    <img src="ccna1.jpg" alt="Sertifikat 6"
+                        style="width: 100%; border-radius: 10px; object-fit: contain; cursor: pointer;"
+                        onclick="openCertificateModal('ccna1.jpg', 'Sertifikat')">
+                    <p style="color: #00d4ff; font-weight: 600; margin-top: 0.5rem; text-align: center;">Introduction to
+                        Networks
+                    </p>
+                </div>
+                <div class="certificate-card"
+                    style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.1); max-width: 180px; box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);">
+                    <img src="ccna2.jpg" alt="Sertifikat 7"
+                        style="width: 100%; border-radius: 10px; object-fit: contain; cursor: pointer;"
+                        onclick="openCertificateModal('ccna2.jpg', 'Sertifikat')">
+                    <p style="color: #00d4ff; font-weight: 600; margin-top: 0.5rem; text-align: center;">Enterprise
+                        Networking, Security, and Automation
+                    </p>
+                </div>
+                <div class="certificate-card"
+                    style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.1); max-width: 180px; box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);">
+                    <img src="ccna3.jpg" alt="Sertifikat 8"
+                        style="width: 100%; border-radius: 10px; object-fit: contain; cursor: pointer;"
+                        onclick="openCertificateModal('ccna3.jpg', 'Sertifikat')">
+                    <p style="color: #00d4ff; font-weight: 600; margin-top: 0.5rem; text-align: center;">Switching,
+                        Routing, and Wireless Essentials
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Modal -->
+    <div id="certificate-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 90%; max-height: 90vh; overflow-y: auto; overflow-x: hidden; position: relative;">
+            <button class="close-btn" onclick="closeCertificateModal()"
+                style="position: absolute; top: 10px; right: 10px; z-index: 10;">&times;</button>
+            <img id="certificate-modal-img" src="" alt="Sertifikat Besar"
+                style="width: 100%; height: auto; border-radius: 15px; object-fit: contain; max-height: 90vh;">
+            <p id="certificate-modal-title"
+                style="color: #00d4ff; font-weight: 600; margin-top: 1rem; text-align: center; font-size: 1.2rem;"></p>
+        </div>
+    </div>
+
+    <!-- Social Links Section -->
+    <section section id="contact" class="social-section">
+        <div class="container">
+            <h2 class="section-title">Connect With Me</h2>
+            <p style="font-size: 1.1rem; color: #cccccc; margin-bottom: 1rem;">
+                Mari terhubung dan berkolaborasi di platform favorit Anda
+            </p>
+            <div class="social-links">
+                <a href="https://github.com/nadhiefilmi" class="social-link" target="_blank">
+                    <div class="social-icon github-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </div>
+                    <span class="social-text">GitHub</span>
+                </a>
+
+                <a href="https://mail.google.com/mail/u/0/?fs=1&to=nadhiefilmi@gmail.com&tf=cm" target="_blank"
+                    class="social-link">
+                    <div class="social-icon gmail-icon">
+                        <img src="icon/gmail.png" alt="Gmail Icon" style="width: 90%; height: 90%; border-radius: 90%;">
+                    </div>
+                    <span class="social-text">Gmail</span>
+                </a>
+
+
+                <a href="https://linkedin.com/in/muhammad-nadhif-fasichul-ilmi" class="social-link" target="_blank">
+                    <div class="social-icon linkedin-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </div>
+                    <span class="social-text">LinkedIn</span>
+                </a>
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Add floating particles effect
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '2px';
+            particle.style.height = '2px';
+            particle.style.background = '#00d4ff';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '1';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            particle.style.opacity = '0.5';
+
+            document.body.appendChild(particle);
+
+            const animation = particle.animate([
+                { transform: 'translateY(0px)', opacity: 0.5 },
+                { transform: `translateY(-${window.innerHeight + 100}px)`, opacity: 0 }
+            ], {
+                duration: Math.random() * 3000 + 2000,
+                easing: 'linear'
+            });
+
+            animation.onfinish = () => particle.remove();
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 300);
+
+        // Certificate modal functions
+        function openCertificateModal(src, title) {
+            const modal = document.getElementById('certificate-modal');
+            const modalImg = document.getElementById('certificate-modal-img');
+            const modalTitle = document.getElementById('certificate-modal-title');
+            modal.style.display = 'flex';
+            modalImg.src = src;
+            modalTitle.textContent = title;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCertificateModal() {
+            const modal = document.getElementById('certificate-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the image
+        document.getElementById('certificate-modal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeCertificateModal();
+            }
+        });
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeCertificateModal();
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const subtitleElement = document.getElementById('typing-subtitle');
+            const fullText = "Mahasiswa Teknik Komputer - Universitas Indonesia";
+            let index = 0;
+
+            function type() {
+                if (index < fullText.length) {
+                    subtitleElement.textContent += fullText.charAt(index);
+                    index++;
+                    setTimeout(type, 150); // typing speed in ms
+                } else {
+                    setTimeout(() => {
+                        subtitleElement.textContent = '';
+                        index = 0;
+                        type();
+                    }, 1500); // pause before restarting typing
+                }
+            }
+
+            type();
+        });
+    </script>
+</body>
+
+</html>
